@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import NavBar from "./components/NavBar.jsx"
+import Registrarse from "./Screens/Registrarse.jsx"
+import Premium from "./Screens/Premium.jsx"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <Router>
+        <NavBar/>
+        <Routes>
+          <Route path="/" element={<Navigate replace to="/premium" />} />
+          {/* replace se usa para reemplazar la entrada actual en el stack de navegación */}
+          <Route path="/premium" element={<Premium/>} />
+          <Route path="/registrarse" element={<Registrarse/>} />
+        </Routes>
+      </Router>
     </div>
   );
 }
